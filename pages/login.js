@@ -1,9 +1,25 @@
-function login() {
+import { getProviders, signIn } from "next-auth/react";
+
+function login({ providers }) {
   return (
     <div>
-      <h1>This is a login page</h1>
+      <img
+        className="w-52 mb-5"
+        src="https://links.papareact.com/9xl"
+        alt="spotify"
+      />
     </div>
   );
 }
 
 export default login;
+
+export async function getServerSideProps() {
+  const providers = await getProviders();
+
+  return {
+    props: {
+      providers,
+    },
+  };
+}
