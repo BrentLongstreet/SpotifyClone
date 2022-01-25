@@ -1,6 +1,6 @@
 import { getProviders, signIn } from "next-auth/react";
 
-function login({ providers }) {
+function Login({ providers }) {
   return (
     <div>
       <img
@@ -8,11 +8,19 @@ function login({ providers }) {
         src="https://links.papareact.com/9xl"
         alt="spotify"
       />
+      {Object.values(providers).map((provider) => (
+        <div
+          key={provider.name}
+          className="absolute top-auto w-20 h-20 bg-transparent right-10 cursor-pointer"
+        >
+          <button>Hello</button>
+        </div>
+      ))}
     </div>
   );
 }
 
-export default login;
+export default Login;
 
 export async function getServerSideProps() {
   const providers = await getProviders();
